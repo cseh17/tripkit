@@ -26,7 +26,7 @@ public class VrsProvider: AbstractNetworkProvider, QueryJourneyDetailManually, Q
         // Load tls client certificate
         if let certName = certAuthorization["certName"] as? String, let certPassword = certAuthorization["password"] as? String {
             do {
-                let identity = try Bundle.module.identity(named: certName, password: certPassword)
+                let identity = try Bundle.main.identity(named: certName, password: certPassword)
                 HttpClient.cacheIdentity(for: "ekap-app.vrs.de", identity: identity)
                 baseEndpoint = VrsProvider.API_BASE
             } catch let error as NSError {
